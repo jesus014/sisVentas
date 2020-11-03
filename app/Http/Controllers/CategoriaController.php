@@ -7,8 +7,9 @@ use App\Http\Requests;
 use App\Models\Categoria;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\CategoriaFormRequest;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Resources\Json\PaginatedResourceResponse;
-use DB;
+
 
 
 
@@ -29,7 +30,7 @@ class CategoriaController extends Controller
         if ($request)
         {
             $query=trim($request->get('searchText'));
-            $categorias=DB::table('categoria')->where('nombre','LIKE','%'.$query.'%')
+            $categorias=DB::table('Categoria')->where('nombre','LIKE','%'.$query.'%')
             ->where ('condicion','=','1')
             ->orderBy('idcategoria','desc')
             ->paginate(7);
