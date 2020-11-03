@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\Models\Categoria;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\CategoriaFormRequest;
 use Illuminate\Http\Resources\Json\PaginatedResourceResponse;
 use DB;
+
+
+
+
+
 
 class CategoriaController extends Controller
 {
@@ -20,13 +26,13 @@ class CategoriaController extends Controller
 
     public function index(Request $request )
     {
-        if($request)
+        if ($request)
         {
-
             $query=trim($request->get('searchText'));
-            $categorias =DB ::table('categoria')->where('nombre','LIKE','%'.$query.'%')
-            ->where('condicion','=','1')
-            ->orderBy('idCategoria','desc');
+            $categorias=DB::table('categoria')->where('nombre','LIKE','%'.$query.'%')
+            ->where ('condicion','=','1')
+            ->orderBy('idcategoria','desc')
+            ->paginate(7);
             return view('almacen.categoria.index',["categorias"=>$categorias,"searchText"=>$query]);
         }
     }
