@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
 use App\Models\Categoria;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\CategoriaFormRequest;
 use Illuminate\Http\Resources\Json\PaginatedResourceResponse;
+use DB;
 
 class CategoriaController extends Controller
 {
