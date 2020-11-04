@@ -20,3 +20,4 @@ Route::get('/', function () {
 //ruta tipo resource
 
 Route::resource('almacen/categoria','App\Http\Controllers\CategoriaController');//declaracion de ruta completa
+
