@@ -41,7 +41,7 @@ class CategoriaController extends Controller
     public function create()
     {
 
-        return view( "alamcen.categoria.create");
+        return view( "almacen.categoria.create");
     }
 
     public function store (CategoriaFormRequest $request)//almacenar el objeto en nuestra tabla categoria
