@@ -48,7 +48,7 @@ class CategoriaController extends Controller
     {
         $categoria=new Categoria;
         $categoria->nombre=$request->get('nombre');
-        $categoria->descripcion=$request->get('nombre');
+        $categoria->descripcion=$request->get('descripcion');
         $categoria->condicion='1';
         //almacenamiento
         $categoria->save();
@@ -57,12 +57,12 @@ class CategoriaController extends Controller
 
     public function show($id)
     {
-        return view("almacen/categoria/show",["categoria"=>Categoria::finndOrFail($id)]);
+        return view("almacen.categoria.show",["categoria"=>Categoria::finndOrFail($id)]);
     }
 
     public function edit($id)
     {
-        return view("almacen/categoria/edit",["categoria"=>Categoria::finndOrFail($id)]);
+        return view("almacen.categoria.edit",["categoria"=>Categoria::finndOrFail($id)]);
 
     }
 

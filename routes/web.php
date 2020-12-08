@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +21,10 @@ Route::get('/', function () {
 //ruta tipo resource
 
 Route::resource('almacen/categoria','App\Http\Controllers\CategoriaController');//declaracion de ruta completa
+//Route::get('misvistas/mi_ruta/{id}', 'DocenteController@editarUsuario');
+//Route::get('almacen/categoria/{id}','App\Http\Controllers\CategoriaController@destroy');
+//Route::get('almacen/categoria/{categoria}/destoy', 'CategoriaController@destroy')->name('categoria.destroy');
+//Route::get('almacen/categoria/{categoria}/update', 'CategoriaController@udapte')->name('categoria.update');
+//Route::get('almacen/categoria/{categoria}/show', 'CategoriaController@show')->name('categoria.show');
+//Route::get('almacen/categoria/{categoria}/edit', 'CategoriaController@edit')->name('categoria.edit');
 
