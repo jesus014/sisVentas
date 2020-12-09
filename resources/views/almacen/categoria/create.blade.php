@@ -13,24 +13,27 @@
         </div>
         @endif
 
-        {!!Form::open(array('/almacen/categoria','method'=>'POST'))!!}
-        {{Form::token()}}
-        <div class="form-group">
+
+
+         <form action="{{route('categoria.store')}}" method="post">
+         @csrf
+
+             <div class="form-group">
             <label for="nombre">Nombre</label>
             <input type="text" name="nombre" class="form-control" placeholder="nombre...">
-        </div>
+          </div>
 
-        <div class="form-group">
+            <div class="form-group">
             <label for="descripcion">Descripcion</label>
             <input type="text" name="descripcion" class="form-control" placeholder="Descripcion...">
-        </div>
+            </div>
 
-        <div class="form-group">
+            <div class="form-group">
             <button class="btn btn-primary" type="submit">Guardar</button>
             <button class="btn btn-danger" type="reset">cancelar</button>
 
-        </div>
-        {!!Form::close()!!}
+            </div>
+        </form>
     </div>
 </div>
 

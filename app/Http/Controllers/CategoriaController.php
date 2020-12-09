@@ -11,11 +11,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Resources\Json\PaginatedResourceResponse;
 
 
-
-
-
-
-
 class CategoriaController extends Controller
 {
     //mostracion para trabajar con las vistas o el controlador
@@ -41,10 +36,10 @@ class CategoriaController extends Controller
     public function create()
     {
 
-        return view( "almacen.categoria.create");
+        return view( 'almacen.categoria.create');
     }
 
-    public function store (CategoriaFormRequest $request)//almacenar el objeto en nuestra tabla categoria
+    public function store (Request $request)//almacenar el objeto en nuestra tabla categoria
     {
         $categoria=new Categoria;
         $categoria->nombre=$request->get('nombre');
@@ -52,7 +47,9 @@ class CategoriaController extends Controller
         $categoria->condicion='1';
         //almacenamiento
         $categoria->save();
-        return Redirect ::to('almacen/categoria');
+        return Redirect()->route('categoria.index');
+       // return Redirect::to('almacen/categoria');
+
     }
 
     public function show($id)

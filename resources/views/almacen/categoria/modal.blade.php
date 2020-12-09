@@ -1,7 +1,10 @@
-<div class="modal fade modal-slide-in.right" aria-hidden="true" role="dialog"
-tabindex="-1" id="modal-delete-{{$cat->idcategoria}}">
-{{Form::Open(array('action'=>array('CategoriaController@destroy',$cat->idcategoria),'method'=>'delete'))}}
-    <div class="modal-dialog">
+<div class="modal fade modal-slide-in.right"  aria-hidden="true" role="dialog" tabindex="-1" id="modal-delete-{{$cat->idcategoria}}">
+<form action=  "{{route('categoria.destroy',$cat->idcategoria)}}" method="post">
+@csrf
+@method('DELETE')
+
+
+<div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
             <button type="button"class="close" data-dismiss="modal" aria-label="Close">
@@ -19,5 +22,5 @@ tabindex="-1" id="modal-delete-{{$cat->idcategoria}}">
         </div>
     </div>
 
-{{Form::Close()}}
+</form>
 </div>
