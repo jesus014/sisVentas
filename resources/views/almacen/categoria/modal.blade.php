@@ -1,3 +1,4 @@
+    <!--Apartado que elimina los productos de almacen-->
 <div class="modal fade modal-slide-in.right"  aria-hidden="true" role="dialog" tabindex="-1" id="modal-delete-{{$cat->idcategoria}}">
 <form action=  "{{route('categoria.destroy',$cat->idcategoria)}}" method="post">
 @csrf

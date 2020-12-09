@@ -5,33 +5,27 @@
 
         <h3> Editar categoria:{{$categoria->nombre}} </h3>
 
-        @if(count($errors>0))
-        <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-        {!!Form::model($categoria,['method'=>'PATCH','route=>['almacen.categoria.update',$categoria->idcategoria]'])!!}
-        {{Form::Token()}}
-        <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" class="form-control" value{{$categoria->nombre}} placeholder="nombre...">
-        </div>
 
-        <div class="form-group">
-            <label for="descripcion">Descripcion</label>
-            <input type="text" name="descripcion" class="form-control" value="{{$categoria->descripcion}}" placeholder="Descripcion...">
-        </div>
 
-        <div class="form-group">
-            <button class="btn btn-primary" type="submit">Guardar</button>
-            <button class="btn btn-danger" type="reset">cancelar</button>
+        <form action="{{route('categoria.update',$categoria->id)}}" method="post">
+         @csrf
+         @method('PUT')
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" class="form-control" value="{{$categoria->nombre}}" >
+            </div>
 
-        </div>
-        {!!Form::close()!!}
+            <div class="form-group">
+                <label for="descripcion">Descripcion</label>
+                <input type="text" name="descripcion" class="form-control" value="{{$categoria->descripcion}}" >
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Guardar</button>
+                <button class="btn btn-danger" type="reset">cancelar</button>
+
+            </div>
+        </form>
     </div>
 </div>
 

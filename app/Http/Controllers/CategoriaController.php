@@ -54,23 +54,28 @@ class CategoriaController extends Controller
 
     public function show($id)
     {
-        return view("almacen.categoria.show",["categoria"=>Categoria::finndOrFail($id)]);
+        return view("almacen.categoria.show",["categoria"=>Categoria::findOrFail($id)]);
     }
 
     public function edit($id)
     {
-        return view("almacen.categoria.edit",["categoria"=>Categoria::finndOrFail($id)]);
+      //  return view("almacen.categoria.edit",["categoria"=>Categoria::findOrFail($id)]);
+        $categoria=Categoria::findOrFail($id);
+        return view('almacen.categoria.edit',compact('categoria'));
 
     }
 
 
-    public function update(CategoriaFormRequest $request, $id)
+
+    public function update(Request $request, $id)
     {
         $categoria=Categoria::findOrFail($id);
-        $categoria->nombre=$request->get('nombre');
-        $categoria->descripcion=$request->get('descripcion');
+        $categoria->nombre=$request->input('nombre');
+        $categoria->descripcion=$request->input('descripcion');
         $categoria->update();
-        return Redirect::to('almacen/categoria');
+        //return Redirect::to('almacen/categoria');
+        return Redirect()->route('categoria.index');
+
     }
 
     public function destroy($id)
