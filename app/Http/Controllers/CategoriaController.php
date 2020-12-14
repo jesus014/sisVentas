@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\Categoria;
@@ -73,6 +72,7 @@ class CategoriaController extends Controller
         $categoria->nombre=$request->input('nombre');
         $categoria->descripcion=$request->input('descripcion');
         $categoria->update();
+        //las rutas se pueden presentar de las dos formas
         //return Redirect::to('almacen/categoria');
         return Redirect()->route('categoria.index');
 
@@ -83,7 +83,9 @@ class CategoriaController extends Controller
         $categoria=Categoria::FindOrFail($id);
         $categoria->condicion='0';
         $categoria->update();
-        return Redirect::to('almacen/categoria');
+        //return Redirect::to('almacen/categoria');
+        return Redirect()->route('categoria.index');
+
     }
 
 

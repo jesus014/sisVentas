@@ -7,7 +7,7 @@
 
 
 
-        <form action="{{route('categoria.update',$categoria->id)}}" method="post">
+        <form action="{{route('categoria.update',$categoria->idcategoria)}}" method="post">
          @csrf
          @method('PUT')
             <div class="form-group">
