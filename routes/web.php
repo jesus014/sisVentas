@@ -20,8 +20,9 @@ Route::get('/', function () {
 
 //ruta tipo resource
 
-Route::resource('almacen/categoria',CategoriaController::class);//declaracion de ruta completa
-Route::resource('almacen/articulo',ArticuloController::class);
+Route::resource('almacen/categoria','CategoriaController');//declaracion de ruta completa
+Route::resource('almacen/articulo','ArticuloController');
+
 //Route::get('misvistas/mi_ruta/{id}', 'DocenteController@editarUsuario');
 //Route::get('almacen/categoria/{id}','App\Http\Controllers\CategoriaController@destroy');
 //Route::get('almacen/categoria/{categoria}/destoy', 'CategoriaController@destroy')->name('categoria.destroy');

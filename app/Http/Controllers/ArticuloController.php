@@ -52,12 +52,12 @@ class ArticuloController extends Controller
         $articulo->descripcion=$request->get('descripcion');
         $articulo->estado=('Activo');
 
-       // if (Input::hasFile('imagen')){
+        if (Input::hasFile('imagen')){
 
-            //$file= Input::file('imagen');
-            //$file->move(public_path().'/imagenes/articulos/',$file->getClientOriginalName());
-            //$articulo->imagen=$file->getClientOriginalName();
-         //}
+           $file= Input::file('imagen');
+           $file->move(public_path().'/imagenes/articulos/',$file->getClientOriginalName());
+            $articulo->imagen=$file->getClientOriginalName();
+         }
 
 
         //almacenamiento
@@ -74,10 +74,10 @@ class ArticuloController extends Controller
 
     public function edit($id)
     {
-      //  return view("almacen.categoria.edit",["categoria"=>Categoria::findOrFail($id)]);
+       //return view("almacen.categoria.edit",["categoria"=>Categoria::findOrFail($id)]);
         $articulo=Articulo::findOrFail($id);
         $categorias=DB::table('categoria')->where('condicion','=','1')->get();
-       // return view('almacen.articulo.edit',compact('articulo'));
+        return view('almacen.articulo.edit',compact('articulo'));
         return view("almacen.articulo.edit",["articulo"=>$articulo,"categorias"=>$categorias]);
 
     }
@@ -93,12 +93,12 @@ class ArticuloController extends Controller
         $articulo->stock=$request->get('stock');
         $articulo->descripcion=$request->get('descripcion');
 
-        //if(Input:: hasFile('imagen')){
+        if(Input:: hasFile('imagen')){
 
-          //  $file=Input::file('imagen');
-            // $file->move(public_path().'/imagenes/articulos/',$file->getClientOriginalName());
-           // $articulo->imagen=$file->getClientOriginalName();
-         //}
+            $file=Input::file('imagen');
+            $file->move(public_path().'/imagenes/articulos/',$file->getClientOriginalName());
+            $articulo->imagen=$file->getClientOriginalName();
+         }
 
         $articulo->update();
         //las rutas se pueden presentar de las dos formas
