@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Models\Persona;
 use Illuminate\Support\Facades\Redirect;
 use App\http\Requests\PersonaFormRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Resources\Json\PaginatedResourceResponse;
 
 
 class ClienteController extends Controller
@@ -40,7 +40,7 @@ public function create(){
 
 }
 
-public function store(PersonaFormRequest $request){
+public function store(Request $request){
 
     $persona = new Persona;
     $persona->nombre=$request->get('nombre');
