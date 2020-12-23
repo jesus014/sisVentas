@@ -29,6 +29,8 @@ Route::resource('almacen/categoria','CategoriaController');
 Route::resource('almacen/articulo','ArticuloController');
 Route::resource('ventas/cliente','ClienteController');
 Route::resource('compras/proveedor','ProveedorController');
+Route::resource('compras/ingreso','IngresoController');
+
 
 //Route::get('misvistas/mi_ruta/{id}', 'DocenteController@editarUsuario');
 //Route::get('almacen/categoria/{id}','App\Http\Controllers\CategoriaController@destroy');
