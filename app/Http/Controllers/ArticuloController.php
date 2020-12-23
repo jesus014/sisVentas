@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
@@ -29,6 +30,7 @@ class ArticuloController extends Controller
             ->join('categoria as c','a.idcategoria', '=','c.idcategoria')
             ->select('a.idarticulo','a.nombre','a.codigo','a.stock','c.nombre as categoria', 'a.descripcion','a.imagen','a.estado')
             ->where('a.nombre','LIKE','%'.$query.'%')
+            -> orwhere('a.codigo','LIKE','%'.$query.'%')
             ->orderBy('idarticulo','desc')
             ->paginate(7);
             return view('almacen.articulo.index',["articulos"=>$articulos,"searchText"=>$query]);
@@ -53,8 +55,8 @@ class ArticuloController extends Controller
 
         if (Input::hasFile('imagen')){
 
-            $file= Input::file('imagen');
-            $file->move(public_path().'/imagenes/articulos/',$file->getClientOriginalName());
+           $file= Input::file('imagen');
+           $file->move(public_path().'/imagenes/articulos/',$file->getClientOriginalName());
             $articulo->imagen=$file->getClientOriginalName();
          }
 
@@ -73,10 +75,10 @@ class ArticuloController extends Controller
 
     public function edit($id)
     {
-      //  return view("almacen.categoria.edit",["categoria"=>Categoria::findOrFail($id)]);
+       //return view("almacen.categoria.edit",["categoria"=>Categoria::findOrFail($id)]);
         $articulo=Articulo::findOrFail($id);
         $categorias=DB::table('categoria')->where('condicion','=','1')->get();
-       // return view('almacen.articulo.edit',compact('articulo'));
+        return view('almacen.articulo.edit',compact('articulo'));
         return view("almacen.articulo.edit",["articulo"=>$articulo,"categorias"=>$categorias]);
 
     }
